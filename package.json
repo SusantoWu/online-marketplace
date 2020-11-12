@@ -34,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.12.1",
+    "truffle": "^5.1.52"
   }
 }
