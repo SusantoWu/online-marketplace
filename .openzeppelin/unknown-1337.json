@@ -1,0 +1,1617 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "d3c4c6d866e1041613b65e60b55d781fb3a2b2f5a00ce98a10a59e66b7f5b2f5": {
+      "address": "0x76a0eC0d98EBd9e4bD6EB606Cb9FB2d188bcFF7a",
+      "txHash": "0x8fcd184544fb7feb6e4dc40b1f54dff72f1636cb8bb81a865bf67fb5975ed32e",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "AccessControlUpgradeable",
+            "label": "_roles",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)1247_storage)",
+            "src": "../@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:61"
+          },
+          {
+            "contract": "AccessControlUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:225"
+          }
+        ],
+        "types": {
+          "t_mapping(t_bytes32,t_struct(RoleData)1247_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "b607cfe9db06bf977e6778b0181d2e91d8b1b5b2fda493ccc7761a72f5a36115": {
+      "address": "0x8403ab74b5f2d2aB231a44fb54055E9bDBAda854",
+      "txHash": "0x741d8af109992382e01dfdbb4720e5271b2801a280067956d92a31469cca6fad",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "AccessControlUpgradeable",
+            "label": "_roles",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)1253_storage)",
+            "src": "../@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:61"
+          },
+          {
+            "contract": "AccessControlUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:225"
+          }
+        ],
+        "types": {
+          "t_mapping(t_bytes32,t_struct(RoleData)1253_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "1b7e1c7a491ed470670db02bb6b31ec88424cdb19f5bed822c9828a31e418e59": {
+      "address": "0x2dda168088f18DfA14d38A084885F32E7798E061",
+      "txHash": "0x2dc4b505995a79b6ae768c61c09b26e3c17df31132fa3dbc9efd9fa7cbab103f",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "_escrow",
+            "type": "t_contract(EscrowUpgradeable)2120",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:27"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:75"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)2396_storage",
+            "src": "v1/Store.sol:40"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)2736_storage)",
+            "src": "v1/Store.sol:41"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)558_storage)",
+            "src": "v1/Store.sol:42"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)2396_storage",
+            "src": "v1/Store.sol:50"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)2736_storage)",
+            "src": "v1/Store.sol:51"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)567_storage)",
+            "src": "v1/Store.sol:52"
+          }
+        ],
+        "types": {
+          "t_struct(Counter)2396_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)2736_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)558_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)2736_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)567_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_contract(EscrowUpgradeable)2120": {
+            "label": "contract EscrowUpgradeable"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "8813496161e84214c6f7531c7065c66121210edbe0508261290f8f52314c2493": {
+      "address": "0x7C0097fb7b0fA9a99522199F4FA0Ee36F1B6e5Ba",
+      "txHash": "0x07d4c1320da1a4b1ba36b9258ca794919aed019dcb3d7561228abd86022b19bc",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "_escrow",
+            "type": "t_contract(EscrowUpgradeable)2126",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:27"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:75"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)2402_storage",
+            "src": "v1/Store.sol:40"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)2742_storage)",
+            "src": "v1/Store.sol:41"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)558_storage)",
+            "src": "v1/Store.sol:42"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)2402_storage",
+            "src": "v1/Store.sol:50"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)2742_storage)",
+            "src": "v1/Store.sol:51"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)567_storage)",
+            "src": "v1/Store.sol:52"
+          }
+        ],
+        "types": {
+          "t_struct(Counter)2402_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)2742_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)558_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)2742_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)567_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_contract(EscrowUpgradeable)2126": {
+            "label": "contract EscrowUpgradeable"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "b36fa11d0f5e522f99f84bc3597faf602feddea78b396fa953bbeb2f5c23af98": {
+      "address": "0xe1F186fc9072Dd67B1Ec677F354b2F5100bfD5bE",
+      "txHash": "0xacaa7d1ce10545fba01514229134ca7b685cefb096c1217ffd87c78ee00467b2",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "_escrow",
+            "type": "t_contract(EscrowUpgradeable)2126",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:27"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:75"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)2402_storage",
+            "src": "v1/Store.sol:40"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)2742_storage)",
+            "src": "v1/Store.sol:41"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)558_storage)",
+            "src": "v1/Store.sol:42"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)2402_storage",
+            "src": "v1/Store.sol:50"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)2742_storage)",
+            "src": "v1/Store.sol:51"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)567_storage)",
+            "src": "v1/Store.sol:52"
+          }
+        ],
+        "types": {
+          "t_struct(Counter)2402_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)2742_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)558_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)2742_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)567_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_contract(EscrowUpgradeable)2126": {
+            "label": "contract EscrowUpgradeable"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "456ba46789ae625cc4712b16cf1c419cfc231519cb75b4f972cf9769cf9c3573": {
+      "address": "0x7D355DB24E820A847C49f0f25c20D85C5b6B8aB9",
+      "txHash": "0x11c743781ef99bd5cf0d9113a01e328fc73dc6aae7ee668bf79266827054b0eb",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)80_storage)",
+            "src": "v1/Auction.sol:35"
+          },
+          {
+            "contract": "Auction",
+            "label": "bidCounter",
+            "type": "t_struct(Counter)2451_storage",
+            "src": "v1/Auction.sol:43"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)2791_storage)",
+            "src": "v1/Auction.sol:44"
+          },
+          {
+            "contract": "Auction",
+            "label": "_bids",
+            "type": "t_mapping(t_uint256,t_struct(Bid)85_storage)",
+            "src": "v1/Auction.sol:45"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(AuctionDetails)80_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_struct(Counter)2451_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)2791_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Bid)85_storage)": {
+            "label": "mapping(uint256 => struct Auction.Bid)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "1889a0c2b4d8d9bfa6e59d7d33d7025cac14354b507ed6e6dd45bb84d943352b": {
+      "address": "0xa377Cca4069B03955750aBFa1D9eBb7Cb71BE73D",
+      "txHash": "0xaa22d440c9f887ca9e5e9aaa59374a57ae30d6c7c281dc06dc619361bb5ff967",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)80_storage)",
+            "src": "v1/Auction.sol:35"
+          },
+          {
+            "contract": "Auction",
+            "label": "bidCounter",
+            "type": "t_struct(Counter)2454_storage",
+            "src": "v1/Auction.sol:43"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)2794_storage)",
+            "src": "v1/Auction.sol:44"
+          },
+          {
+            "contract": "Auction",
+            "label": "_bids",
+            "type": "t_mapping(t_uint256,t_struct(Bid)85_storage)",
+            "src": "v1/Auction.sol:45"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(AuctionDetails)80_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_struct(Counter)2454_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)2794_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Bid)85_storage)": {
+            "label": "mapping(uint256 => struct Auction.Bid)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "257d79635f8964ecadbef77827ca4d3a81ce7e2e7df780148a9738c44ec21696": {
+      "address": "0x0364130e28702332cAe1cE59f289C048E252685f",
+      "txHash": "0x95440c57f04435f1244f6973919a2c725d1098de7ea35536100b5f63da6dd703",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)",
+            "src": "v1/Auction.sol:30"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)",
+            "src": "v1/Auction.sol:39"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)": {
+            "label": "mapping(uint256 => struct MyEnumerableMap.AddressToUintMap)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "b8ebc81dae16f5dc3d555ac41c4bb38dd7134f91eb5843f3ecec401cbd399e6f": {
+      "address": "0xD15EA3cCE58E00579218156b452121B21BD757da",
+      "txHash": "0xbf20a9c6c9f7cacd8eb3a5c63fe23df1bf774c6b00db4d4fe8ae56a0a2e861a4",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)",
+            "src": "v1/Auction.sol:30"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)",
+            "src": "v1/Auction.sol:39"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)": {
+            "label": "mapping(uint256 => struct MyEnumerableMap.AddressToUintMap)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "c89b7fce387d5fd53ec98a2baf6aad3fdb1fb381443f74034b4b5d87550c303b": {
+      "address": "0x966877E4ff81796c1E9a2eEf45B3019d95790a44",
+      "txHash": "0x47cde4d2abb1f85618639f964025d5591c5ac41909602b02f2fc7e70074c01de",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)",
+            "src": "v1/Auction.sol:30"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)",
+            "src": "v1/Auction.sol:39"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)": {
+            "label": "mapping(uint256 => struct MyEnumerableMap.AddressToUintMap)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "a00f20eb4a4eaea6dfe30633453e2c5e586f5e326825614a62767f70d42e24fb": {
+      "address": "0x430400D9d29dEC1feE405fE3D4E4e96B5Cbf825c",
+      "txHash": "0x9c830abd8622bbd33feae81c653bddecaea40fa69444bf5e8e121ca796ca43a5",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)",
+            "src": "v1/Auction.sol:30"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)",
+            "src": "v1/Auction.sol:39"
+          }
+        ],
+        "types": {
+          "t_mapping(t_uint256,t_struct(AuctionDetails)527_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)": {
+            "label": "mapping(uint256 => struct MyEnumerableMap.AddressToUintMap)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "81511e4f6d388b89ec37d67f4aaf60dd184556a57107d998677c7bdd3dfc57b0": {
+      "address": "0xD156A16eC4BBF2487AC02586362852b7aE12B3AF",
+      "txHash": "0xfc5f9946f515b68ebc2f0cba790fda0e097279725fa7660d3e5be712b56e8510",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "AccessControlUpgradeable",
+            "label": "_roles",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)1866_storage)",
+            "src": "../@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:61"
+          },
+          {
+            "contract": "AccessControlUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:225"
+          }
+        ],
+        "types": {
+          "t_mapping(t_bytes32,t_struct(RoleData)1866_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "af35a62b48f0defd5eabc92f6e4f95abff8b10c715f5e08a71bfa9fbe54d8150": {
+      "address": "0x8eB418101e3891630fecb469C7dE35Fe52633De8",
+      "txHash": "0xef6a38153d2137a86a722008e5caf210a82bad046bfb623bf71139dcb1efaf1d",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Store",
+            "label": "_user",
+            "type": "t_contract(User)1781",
+            "src": "v1/Store.sol:26"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)2962_storage",
+            "src": "v1/Store.sol:46"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)3302_storage)",
+            "src": "v1/Store.sol:47"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)1089_storage)",
+            "src": "v1/Store.sol:48"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)2962_storage",
+            "src": "v1/Store.sol:56"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)3302_storage)",
+            "src": "v1/Store.sol:57"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)1098_storage)",
+            "src": "v1/Store.sol:58"
+          }
+        ],
+        "types": {
+          "t_contract(User)1781": {
+            "label": "contract User"
+          },
+          "t_struct(Counter)2962_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)3302_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)1089_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)3302_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)1098_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "23c7490a772f6e2491e1ba4c5aa6ca5782fea084720a090a277989981ce2001a": {
+      "address": "0x9E3713407eaF714f139d099452836b4526cb3B52",
+      "txHash": "0x55e87b5f2695199b43bb58bdaca8bbd7fe0c5492afdee2aef4507f3f81c2bf8c",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Store",
+            "label": "_user",
+            "type": "t_contract(User)1766",
+            "src": "v1/Store.sol:26"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)2947_storage",
+            "src": "v1/Store.sol:46"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)3287_storage)",
+            "src": "v1/Store.sol:47"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)1089_storage)",
+            "src": "v1/Store.sol:48"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)2947_storage",
+            "src": "v1/Store.sol:56"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)3287_storage)",
+            "src": "v1/Store.sol:57"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)1098_storage)",
+            "src": "v1/Store.sol:58"
+          }
+        ],
+        "types": {
+          "t_contract(User)1766": {
+            "label": "contract User"
+          },
+          "t_struct(Counter)2947_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)3287_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)1089_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)3287_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)1098_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "10ba930d93d1ac23feb945859f77ee4247991c3baa4cbf0db87790db2594ad92": {
+      "address": "0xe9F8c52b5066b1C289Ae1eD7C3cF7AA7941888BA",
+      "txHash": "0xee84c5e4c5d897f9c5f1bd40c0b9e550bd0749cb0d2cdd4c817908be7ca857d8",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Store",
+            "label": "_user",
+            "type": "t_contract(User)1781",
+            "src": "v1/Store.sol:26"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)2962_storage",
+            "src": "v1/Store.sol:46"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)3302_storage)",
+            "src": "v1/Store.sol:47"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)1089_storage)",
+            "src": "v1/Store.sol:48"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)2962_storage",
+            "src": "v1/Store.sol:56"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)3302_storage)",
+            "src": "v1/Store.sol:57"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)1098_storage)",
+            "src": "v1/Store.sol:58"
+          }
+        ],
+        "types": {
+          "t_contract(User)1781": {
+            "label": "contract User"
+          },
+          "t_struct(Counter)2962_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)3302_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)1089_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)3302_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)1098_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "d7032950cd6c18dbd8f059bef9430882b0c6771897fac34bb283514862f6433f": {
+      "address": "0x9801baB9258C1bd3F97fe48226ebEa36Ef28715C",
+      "txHash": "0x89d9d411667b4c80fc8f813484c441e79cc6de1d54306c31eac9a21c9ab68542",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "_escrow",
+            "type": "t_contract(EscrowUpgradeable)2972",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:27"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:75"
+          },
+          {
+            "contract": "Payment",
+            "label": "_user",
+            "type": "t_contract(User)2067",
+            "src": "v1/Payment.sol:21"
+          }
+        ],
+        "types": {
+          "t_contract(User)2067": {
+            "label": "contract User"
+          },
+          "t_contract(EscrowUpgradeable)2972": {
+            "label": "contract EscrowUpgradeable"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "ab07f50c003a55b37085e937cacdb16da0564229364d58158e74054af4cc53b4": {
+      "address": "0xA57c91c4af389A0ef7400E3FCba049Ff1e3D6A3E",
+      "txHash": "0xde578c15620fc00ac17ef5450d6681b8d0d27a50f744b7991cc1d396f4f2a2f1",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Store",
+            "label": "_user",
+            "type": "t_contract(User)2067",
+            "src": "v1/Store.sol:27"
+          },
+          {
+            "contract": "Store",
+            "label": "_payment",
+            "type": "t_contract(Payment)1150",
+            "src": "v1/Store.sol:28"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)3248_storage",
+            "src": "v1/Store.sol:48"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)3588_storage)",
+            "src": "v1/Store.sol:49"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)1187_storage)",
+            "src": "v1/Store.sol:50"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)3248_storage",
+            "src": "v1/Store.sol:58"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)3588_storage)",
+            "src": "v1/Store.sol:59"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)1196_storage)",
+            "src": "v1/Store.sol:60"
+          }
+        ],
+        "types": {
+          "t_contract(User)2067": {
+            "label": "contract User"
+          },
+          "t_contract(Payment)1150": {
+            "label": "contract Payment"
+          },
+          "t_struct(Counter)3248_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)3588_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)1187_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)3588_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)1196_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "f8c1fb93a17e6feec80640338f62ca2f94ad8ceeab306cc12145ad7572a47db8": {
+      "address": "0x51Facc09871fdfe57729353DC3F5cbcB9D63016B",
+      "txHash": "0xeb68a4a86bf7e6654b65d0a78aa6b0f7371316d80096cbbe91d1c265b669bd64",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_user",
+            "type": "t_contract(User)2067",
+            "src": "v1/Auction.sol:27"
+          },
+          {
+            "contract": "Auction",
+            "label": "_payment",
+            "type": "t_contract(Payment)1150",
+            "src": "v1/Auction.sol:28"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)535_storage)",
+            "src": "v1/Auction.sol:39"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)",
+            "src": "v1/Auction.sol:44"
+          }
+        ],
+        "types": {
+          "t_contract(User)2067": {
+            "label": "contract User"
+          },
+          "t_contract(Payment)1150": {
+            "label": "contract Payment"
+          },
+          "t_mapping(t_uint256,t_struct(AuctionDetails)535_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)": {
+            "label": "mapping(uint256 => struct MyEnumerableMap.AddressToUintMap)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "e237a5c3fcd0289cda61e6e6051c341e4379c7f2fbdd8e14fb52e4f06945ebaa": {
+      "address": "0xEA13E2107FcA0717196f28D6fA501156dcfF89C5",
+      "txHash": "0x99473d6362fb2b7040b8fd19603e4606d0ce855b10c5dd1eb6552fd9c1c192f7",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "_escrow",
+            "type": "t_contract(EscrowUpgradeable)2990",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:27"
+          },
+          {
+            "contract": "PullPaymentUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol:75"
+          },
+          {
+            "contract": "Payment",
+            "label": "_user",
+            "type": "t_contract(User)2085",
+            "src": "v1/Payment.sol:21"
+          }
+        ],
+        "types": {
+          "t_contract(User)2085": {
+            "label": "contract User"
+          },
+          "t_contract(EscrowUpgradeable)2990": {
+            "label": "contract EscrowUpgradeable"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "94d639c7fd237c4150fd411370dd9f794ad2c693fb33ce6c1b7a1983779147e1": {
+      "address": "0xCf97530A9335EB15E6e30D91b55d1015999e131a",
+      "txHash": "0x284b1723042e43bdf68e63cb2dc92bda5e66995ec58be0543eb499c227246e54",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Store",
+            "label": "_user",
+            "type": "t_contract(User)2092",
+            "src": "v1/Store.sol:27"
+          },
+          {
+            "contract": "Store",
+            "label": "_payment",
+            "type": "t_contract(Payment)1170",
+            "src": "v1/Store.sol:28"
+          },
+          {
+            "contract": "Store",
+            "label": "storeCounter",
+            "type": "t_struct(Counter)3273_storage",
+            "src": "v1/Store.sol:48"
+          },
+          {
+            "contract": "Store",
+            "label": "_sellerStores",
+            "type": "t_mapping(t_address,t_struct(UintSet)3613_storage)",
+            "src": "v1/Store.sol:49"
+          },
+          {
+            "contract": "Store",
+            "label": "_stores",
+            "type": "t_mapping(t_uint256,t_struct(StoreDetails)1207_storage)",
+            "src": "v1/Store.sol:50"
+          },
+          {
+            "contract": "Store",
+            "label": "productCounter",
+            "type": "t_struct(Counter)3273_storage",
+            "src": "v1/Store.sol:58"
+          },
+          {
+            "contract": "Store",
+            "label": "_storeProducts",
+            "type": "t_mapping(t_uint256,t_struct(UintSet)3613_storage)",
+            "src": "v1/Store.sol:59"
+          },
+          {
+            "contract": "Store",
+            "label": "_products",
+            "type": "t_mapping(t_uint256,t_struct(Product)1216_storage)",
+            "src": "v1/Store.sol:60"
+          }
+        ],
+        "types": {
+          "t_contract(User)2092": {
+            "label": "contract User"
+          },
+          "t_contract(Payment)1170": {
+            "label": "contract Payment"
+          },
+          "t_struct(Counter)3273_storage": {
+            "label": "struct CountersUpgradeable.Counter"
+          },
+          "t_mapping(t_address,t_struct(UintSet)3613_storage)": {
+            "label": "mapping(address => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(StoreDetails)1207_storage)": {
+            "label": "mapping(uint256 => struct Store.StoreDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(UintSet)3613_storage)": {
+            "label": "mapping(uint256 => struct EnumerableSetUpgradeable.UintSet)"
+          },
+          "t_mapping(t_uint256,t_struct(Product)1216_storage)": {
+            "label": "mapping(uint256 => struct Store.Product)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "5ddc9abe305154ca013ac4d937104dee93f12e8e98bf3776ede4548111d1597e": {
+      "address": "0x4570BE8f56cd7b2048b0c70483D3708cB3405A1e",
+      "txHash": "0x33a522ce71c38aeeec53b284b5883c6c2b5362e5e3a629028cfad10eacfde76e",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:28"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "Auction",
+            "label": "_user",
+            "type": "t_contract(User)2092",
+            "src": "v1/Auction.sol:27"
+          },
+          {
+            "contract": "Auction",
+            "label": "_store",
+            "type": "t_contract(Store)1950",
+            "src": "v1/Auction.sol:28"
+          },
+          {
+            "contract": "Auction",
+            "label": "_auctions",
+            "type": "t_mapping(t_uint256,t_struct(AuctionDetails)535_storage)",
+            "src": "v1/Auction.sol:39"
+          },
+          {
+            "contract": "Auction",
+            "label": "_productBids",
+            "type": "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)",
+            "src": "v1/Auction.sol:44"
+          }
+        ],
+        "types": {
+          "t_contract(User)2092": {
+            "label": "contract User"
+          },
+          "t_contract(Store)1950": {
+            "label": "contract Store"
+          },
+          "t_mapping(t_uint256,t_struct(AuctionDetails)535_storage)": {
+            "label": "mapping(uint256 => struct Auction.AuctionDetails)"
+          },
+          "t_mapping(t_uint256,t_struct(AddressToUintMap)322_storage)": {
+            "label": "mapping(uint256 => struct MyEnumerableMap.AddressToUintMap)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0xC4a9c90AaeE4D6141691c823e0F3A26AbDbaaA6D",
+    "txHash": "0x753799260d1fc361c3aacc587a81ad54db314c9dc7ee13bba48915b79470cfd7"
+  }
+}
