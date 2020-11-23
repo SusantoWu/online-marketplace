@@ -8,8 +8,10 @@ const Store = artifacts.require('v1/Store');
 
 contract('Auction', accounts => {
   const [owner, seller, buyer1, buyer2] = accounts;
+  const productBN = new BN(0);
   const priceBN = new BN(1);
-  const productBN = new BN(2);
+  const bidPriceBN = new BN(2);
+  const highBidPriceBN = new BN(3);
 
   before(async () => {
     await time.advanceBlock();
@@ -23,6 +25,8 @@ contract('Auction', accounts => {
 
     this.store = await Store.new();
     await this.store.initialize(this.user.address, this.payment.address);
+    await this.store.open('Store 1', { from: seller });
+    await this.store.add('Product 1', 1, 2, 0, { from: seller });
   });
 
   beforeEach(async () => {
@@ -51,29 +55,41 @@ contract('Auction', accounts => {
 
   it('bid', async () => {
     await time.increaseTo(this.afterOpeningTime);
-    const receipt = await this.auction.bid(productBN, new BN(2), { from: buyer1 });
+    const { logs } = await this.auction.bid(productBN, { from: buyer1, value: bidPriceBN });
 
-    expectEvent(receipt, 'Bidded');
-
-    expect(await this.auction.hasBidded(productBN, { from: buyer1 })).to.equal(true);
+    expectEvent.inLogs(logs, 'Bidded', {
+      product: productBN,
+      price: bidPriceBN,
+      bidder: buyer1,
+    });
   });
 
   it('bid multiple times', async () => {
     await time.increaseTo(this.afterOpeningTime);
-    await this.auction.bid(productBN, new BN(2), { from: buyer1 });
+    await this.auction.bid(productBN, { from: buyer1, value: bidPriceBN });
 
-    await expectRevert(this.auction.bid(productBN, new BN(2), { from: buyer1 }), 'Auction: user has bidded');
+    await expectRevert(this.auction.bid(productBN, { from: buyer1, value: bidPriceBN }), 'Auction: user has bidded');
   });
 
-  // TODO: need to check exception on payment _asyncTransfer
-  /* it('end', async () => {
+  it('end', async () => {
     await time.increaseTo(this.afterOpeningTime);
-    await this.auction.bid(productBN, new BN(2), { from: buyer1 });
-    await this.auction.bid(productBN, new BN(3), { from: buyer2 });
+    await this.auction.bid(productBN, { from: buyer1, value: bidPriceBN });
+    await this.auction.bid(productBN, { from: buyer2, value: highBidPriceBN });
 
     await time.increaseTo(this.afterClosingTime);
     const { logs } = await this.auction.end(productBN, { from: seller });
 
-    expectEvent.inLogs(logs, 'AuctionEnded', { bidder: buyer2, price: new BN(3) });
-  }); */
+    expectEvent.inLogs(logs, 'AuctionEnded', {
+      product: productBN,
+      price: highBidPriceBN,
+      bidder: buyer2,
+      seller
+    });
+    expectEvent.inLogs(logs, 'BidRefunded', {
+      product: productBN,
+      price: bidPriceBN,
+      bidder: buyer1,
+      seller
+    });
+  });
 });

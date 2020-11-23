@@ -305,8 +305,11 @@ contract Store is Initializable, ContextUpgradeable {
     /**
      * @dev Throw if not enough value send.
      */
-    modifier paidEnough(uint256 total) {
-        require(msg.value >= total, "MarketPlace: insufficient value");
+    modifier paidEnough(uint256 id, uint256 quantity) {
+        require(
+            msg.value >= _products[id].price.mul(quantity),
+            "MarketPlace: insufficient value"
+        );
         _;
     }
 
@@ -324,12 +327,12 @@ contract Store is Initializable, ContextUpgradeable {
     /**
      * @dev Send excess amount after substract required price.
      */
-    modifier refundExcess(uint256 total) {
+    modifier refundExcess(uint256 id, uint256 quantity) {
         _;
         uint256 paid = msg.value;
-        uint256 amountToRefund = paid.sub(total);
+        uint256 amountToRefund = paid.sub(_products[id].price.mul(quantity));
         if (amountToRefund > 0) {
-            _msgSender().transfer(amountToRefund);
+            AddressUpgradeable.sendValue(_msgSender(), amountToRefund);
         }
     }
 
@@ -343,41 +346,37 @@ contract Store is Initializable, ContextUpgradeable {
     }
 
     /**
-     * @dev Call payment contract with price and seller.
+     * @dev Check value and refund.
      * @param id product identifier
      * @param quantity number of product
      */
     function buy(uint256 id, uint256 quantity)
         public
-        stockEnough(id, quantity)
+        payable
+        paidEnough(id, quantity)
+        refundExcess(id, quantity)
     {
         Product storage product = _products[id];
         uint256 total = product.price.mul(quantity);
 
-        settle(id, total, quantity);
+        settle(id, quantity, total);
+
+        emit ProductBought(id, quantity, total, _msgSender());
     }
 
     /**
-     * @dev Push payment.
-     * @param id product id
-     * @param total purchase price in total
+     * @dev Push payment and deduct stock.
+     * @param id product identifier
      * @param quantity number of product
+     * @param total pruce to pay
      */
     function settle(
         uint256 id,
-        uint256 total,
-        uint256 quantity
-    )
-        public
-        payable
-        paidEnough(total)
-        refundExcess(total)
-        deductStock(id, quantity)
-    {
+        uint256 quantity,
+        uint256 total
+    ) public payable stockEnough(id, quantity) deductStock(id, quantity) {
         Product storage product = _products[id];
 
-        _payment.pay(_stores[product.storeId].seller, total);
-
-        emit ProductBought(id, quantity, total, _msgSender());
+        _payment.pay{value: total}(_stores[product.storeId].seller, total);
     }
 }

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { expectEvent } = require('@openzeppelin/test-helpers');
+const { expectEvent, BN } = require('@openzeppelin/test-helpers');
 
 const User = artifacts.require('v1/User');
 const Payment = artifacts.require('v1/Payment');
@@ -23,29 +23,38 @@ contract('Store', accounts => {
   });
 
   describe('seller store', () => {
+    const storeName = 'Store 1';
+    const storeBN = new BN(0);
+
     it('add a store', async () => {
-      const receipt = await this.store.open('Store 1', { from: seller });
+      const { logs } = await this.store.open(storeName, { from: seller });
 
-      expectEvent(receipt, 'StoreCreated');
-
-      const { '1': name } = await this.store.getStore(0, { from: seller });
-
-      expect(name).to.equal('Store 1');
+      expectEvent.inLogs(logs, 'StoreCreated', {
+        id: storeBN,
+        name: storeName,
+        seller
+      });
     });
 
     it('close a store', async () => {
-      await this.store.open('Store 1', { from: seller });
+      await this.store.open(storeName, { from: seller });
 
-      const receipt = await this.store.close(0, { from: seller });
+      const { logs } = await this.store.close(storeBN, { from: seller });
 
-      expectEvent(receipt, 'StoreRemoved');
-
-      expect((await this.store.getStoreCount({ from: seller })).toString()).to.equal('0');
+      expectEvent.inLogs(logs, 'StoreRemoved', {
+        id: storeBN,
+        seller
+      });
     });
   });
 
   describe('products', () => {
     let storeId;
+    const productName = 'Product 1';
+    const productBN = new BN(0);
+    const quantityBN = new BN(1);
+    const priceBN = new BN(2);
+    const newPriceBN = new BN(3);
 
     beforeEach(async () => {
       await this.store.open('Store 1', { from: seller });
@@ -54,49 +63,54 @@ contract('Store', accounts => {
     });
 
     it('add a product', async () => {
-      const receipt = await this.store.add('Product 1', 1, 2, storeId, { from: seller });
+      const { logs } = await this.store.add(productName, quantityBN, priceBN, storeId, { from: seller });
 
-      expectEvent(receipt, 'ProductAdded');
-
-      const { '1': name } = await this.store.getProduct(storeId, 0, { from: seller });
-
-      expect(name).to.equal('Product 1');
+      expectEvent.inLogs(logs, 'ProductAdded', {
+        id: productBN,
+        name: productName,
+        quantity: quantityBN,
+        price: priceBN,
+        storeId,
+        seller
+      });
     });
 
     it('update a product price', async () => {
-      await this.store.add('Product 1', 1, 2, storeId, { from: seller });
+      await this.store.add(productName, quantityBN, priceBN, storeId, { from: seller });
 
-      const receipt = await this.store.update(storeId, 0, 3, { from: seller });
+      const { logs } = await this.store.update(storeId, productBN, newPriceBN, { from: seller });
 
-      expectEvent(receipt, 'ProductUpdated');
-
-      const { '3': price } = await this.store.getProduct(storeId, 0, { from: seller });
-
-      expect(price.toString()).to.equal('3');
+      expectEvent.inLogs(logs, 'ProductUpdated', {
+        id: productBN,
+        oldPrice: priceBN,
+        price: newPriceBN,
+        seller
+      });
     });
 
     it('remove a product', async () => {
-      await this.store.add('Product 1', 1, 2, storeId, { from: seller });
+      await this.store.add(productName, quantityBN, priceBN, storeId, { from: seller });
 
-      const receipt = await this.store.remove(storeId, 0, { from: seller });
+      const { logs } = await this.store.remove(storeId, productBN, { from: seller });
 
-      expectEvent(receipt, 'ProductRemoved');
-
-      expect((await this.store.getProductCount(storeId)).toString()).to.equal('0');
+      expectEvent.inLogs(logs, 'ProductRemoved', {
+        id: productBN,
+        storeId,
+        seller
+      });
     });
 
-    // TODO: need to check exception on payment _asyncTransfer
-    /* it('purchase a product', async () => {
-      await this.store.add('Product 1', 1, 2, storeId, { from: seller });
+    it('purchase a product', async () => {
+      await this.store.add(productName, quantityBN, priceBN, storeId, { from: seller });
 
-      const { logs } = await this.store.buy(0, 1, { from: buyer, value: 2 });
+      const { logs } = await this.store.buy(productBN, quantityBN, { from: buyer, value: priceBN });
 
       expectEvent.inLogs(logs, 'ProductBought', {
-        id: 0,
-        quantity: 1,
-        total: 2,
+        id: productBN,
+        quantity: quantityBN,
+        paid: priceBN,
         buyer
       });
-    }); */
+    });
   });
 });

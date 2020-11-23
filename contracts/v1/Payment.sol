@@ -5,6 +5,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/GSN/ContextUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/payment/PullPaymentUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 import "./User.sol";
 
 /**
@@ -12,7 +13,12 @@ import "./User.sol";
  * @author Susanto Wu
  * @dev Keep track of payments using pull payment pattern.
  */
-contract Payment is Initializable, ContextUpgradeable, PullPaymentUpgradeable {
+contract Payment is
+    Initializable,
+    ContextUpgradeable,
+    PullPaymentUpgradeable,
+    ReentrancyGuardUpgradeable
+{
     using AddressUpgradeable for address;
 
     /**
@@ -35,6 +41,7 @@ contract Payment is Initializable, ContextUpgradeable, PullPaymentUpgradeable {
         require(user.isContract(), "Payment: user address is not contract");
 
         __PullPayment_init();
+        __ReentrancyGuard_init();
 
         _user = User(user);
     }
@@ -46,7 +53,7 @@ contract Payment is Initializable, ContextUpgradeable, PullPaymentUpgradeable {
     /**
      * @dev Check store payments and release to sender address.
      */
-    function withdraw() public onlySeller(_msgSender()) {
+    function withdraw() public onlySeller(_msgSender()) nonReentrant {
         require(payments(_msgSender()) > 0, "Payment: no fund to withdraw");
 
         withdrawPayments(_msgSender());
@@ -55,7 +62,11 @@ contract Payment is Initializable, ContextUpgradeable, PullPaymentUpgradeable {
     /**
      * @dev Add payment to payee address.
      */
-    function pay(address payee, uint256 amount) public onlySeller(payee) {
+    function pay(address payee, uint256 amount)
+        public
+        payable
+        onlySeller(payee)
+    {
         _asyncTransfer(payee, amount);
     }
 }

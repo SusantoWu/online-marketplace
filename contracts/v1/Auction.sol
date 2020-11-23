@@ -51,8 +51,19 @@ contract Auction is Initializable, ContextUpgradeable {
         uint256 startPrice,
         address seller
     );
-    event AuctionEnded(uint256 product, uint256 price, address bidder);
+    event AuctionEnded(
+        uint256 product,
+        uint256 price,
+        address bidder,
+        address seller
+    );
     event Bidded(uint256 product, uint256 price, address bidder);
+    event BidRefunded(
+        uint256 product,
+        uint256 price,
+        address bidder,
+        address seller
+    );
 
     /**
      * @dev Throw if address not seller.
@@ -145,15 +156,16 @@ contract Auction is Initializable, ContextUpgradeable {
     /**
      * @dev Add sender bid, increase counter.
      * @param product product identifier
-     * @param price bid price
      */
-    function bid(uint256 product, uint256 price) public {
+    function bid(uint256 product) public payable {
         require(isOpen(product), "Auction: has ended");
         require(!hasBidded(product), "Auction: user has bidded");
         require(
-            price >= _auctions[product].startPrice,
+            msg.value >= _auctions[product].startPrice,
             "Auction: price lower than start price"
         );
+
+        uint256 price = msg.value;
 
         if (_productBids[product].set(_msgSender(), price)) {
             emit Bidded(product, price, _msgSender());
@@ -191,28 +203,56 @@ contract Auction is Initializable, ContextUpgradeable {
 
         (address bidder, uint256 price) = getHighestBid(product);
 
-        // Auction only for ONE quantity.
-        _store.settle{value: price}(product, price, 1);
+        // Push the highest bid to store payment.
+        _store.settle{value: price}(product, 1, price);
 
-        clear(product);
+        clear(product, bidder);
 
-        emit AuctionEnded(product, price, bidder);
+        emit AuctionEnded(product, price, bidder, _msgSender());
     }
 
     /**
      * @dev clean up all the mappings
      * @param product product identifier
+     * @param account highest bidder
      */
-    function clear(uint256 product) private {
-        // Remove bids before other mappings.
+    function clear(uint256 product, address account) private {
+        // Clean up bids
         for (uint256 i = 0; i < _productBids[product].length(); i++) {
-            (address bidder, ) = getBid(product, i);
+            (address bidder, uint256 price) = getBid(product, i);
+
             _productBids[product].remove(bidder);
+
+            // Only refund if not highest bidder
+            if (bidder != account) {
+                refund(product, bidder, price);
+            }
         }
 
         delete (_productBids[product]);
 
         delete (_auctions[product]);
+    }
+
+    /**
+     * @dev refund bid
+     * @param product product identifier
+     * @param bidder address to refund
+     * @param price amount to refund
+     */
+    function refund(
+        uint256 product,
+        address bidder,
+        uint256 price
+    ) private {
+        require(
+            address(this).balance >= price,
+            "Auction: insufficient balance"
+        );
+
+        AddressUpgradeable.sendValue(payable(bidder), price);
+
+        emit BidRefunded(product, price, bidder, _msgSender());
     }
 
     /**
