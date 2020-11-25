@@ -72,15 +72,24 @@ export const updateProduct = async (storeId, productId, price, sender) => {
   return storeContract.methods.update(storeId, productId, price).send({ from: sender });
 }
 
-export const getProducts = async (page, count) => {
+export const getProducts = async (page, count, sender) => {
   const storeContract = await getContract();
-  const { productIds, prev, next } = resultToObject(
-    await storeContract.methods.getProducts(page, count).call(), 'productIds', 'prev', 'next'
+  const paginate = resultToObject(
+    await storeContract.methods.getProductPaginate(page, count).call({ from: sender }), 'start', 'end', 'prev', 'next'
   );
-  const products = productIds.map((id) => products.push(storeContract.methods.getProduct(id).call()
-    .then(parseProduct)
-  ));
-  return { data: Promise.all(products), prev, next };
+  const products = [];
+  for (let i = parseInt(paginate.start); i < parseInt(paginate.end); i++) {
+    products.push(storeContract.methods.getProductListProduct(i).call({ from: sender })
+      .then(parseProduct)
+    );
+  }
+  return Promise.all(products)
+    .then((data) => ({ data, prev: paginate.prev, next: paginate.next }));
+}
+
+export const buyProduct = async (productId, quantity, total, sender) => {
+  const storeContract = await getContract();
+  return storeContract.methods.buy(productId, quantity).send({ from: sender, value: total });
 }
 
 export const subscribeEvent = async (eventname, callback, filter) => {

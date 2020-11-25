@@ -12021,7 +12021,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2020-11-25T10:22:53.130Z",
+  "updatedAt": "2020-11-25T15:25:26.862Z",
   "devdoc": {
     "details": "Library for managing an enumerable variant of Solidity's Not sure how to utilize EnumerableMapUpgradeable library in another library to expand mapping variants. Copy from Open Zeppelin EnumerableMapUpgradeable, please refer below https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/master/contracts/utils/EnumerableMapUpgradeable.sol Support `address -> uint256` (`AddressToUintMap`)",
     "kind": "dev",

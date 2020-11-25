@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Heading, Input, Card, Text, Button, Flex, Box, theme, ToastMessage } from 'rimble-ui';
+import { Heading, Input, Card, Text, Button, Flex, Box, theme } from 'rimble-ui';
 import styled from 'styled-components';
 import { getStores, addStore, subscribeEvent, deleteStore } from '../services/store';
 import { getPayments, withdraw, subscribeEvent as paymentSubscribeEvent } from '../services/payment';
@@ -24,7 +24,7 @@ const ButtonProducts = (id) => <Link to={`/stores/${id}`}><Button icon="ViewList
 class Stores extends Component {
   constructor(props) {
     super(props);
-    this.state = { stores: [], payments: 0, value: '', alert: null };
+    this.state = { stores: [], payments: 0, value: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,16 +50,6 @@ class Stores extends Component {
         }))
       }
     });
-
-    /* paymentSubscribeEvent('Withdrawn', {
-      data: ({ returnValues }) => {
-        const { payee, payment } = returnValues;
-        this.setState({
-          payments: 0,
-          alert: { header: 'ETH Sent', message: `You have withdrawn ${payment} Ether to ${payee}` }
-        });
-      }
-    }); */
 
     this.initialise();
   }
@@ -96,7 +86,16 @@ class Stores extends Component {
 
   handleWithdraw() {
     const { account } = this.props;
-    withdraw(account);
+    const { payments } = this.state;
+
+    withdraw(account, {
+      receipt: () => {
+        this.setState({
+          payments: 0,
+        });
+        alert(`You have withdrawn ${payments} Ether to ${account}`);
+      }
+    });
   }
 
   render() {

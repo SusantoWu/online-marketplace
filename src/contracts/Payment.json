@@ -110,7 +110,7 @@
         "id": 1116,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 3406,
+        "sourceUnit": 3384,
         "src": "57:69:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -121,7 +121,7 @@
         "id": 1117,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 2475,
+        "sourceUnit": 2453,
         "src": "127:72:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -132,7 +132,7 @@
         "id": 1118,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 3193,
+        "sourceUnit": 3171,
         "src": "200:80:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -143,7 +143,7 @@
         "id": 1119,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 3601,
+        "sourceUnit": 3579,
         "src": "281:74:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -154,7 +154,7 @@
         "id": 1120,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 4104,
+        "sourceUnit": 4082,
         "src": "356:82:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -165,7 +165,7 @@
         "id": 1121,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 2430,
+        "sourceUnit": 2408,
         "src": "439:20:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -180,10 +180,10 @@
               "id": 1123,
               "name": "Initializable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3405,
+              "referencedDeclaration": 3383,
               "src": "605:13:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Initializable_$3405",
+                "typeIdentifier": "t_contract$_Initializable_$3383",
                 "typeString": "contract Initializable"
               }
             },
@@ -198,10 +198,10 @@
               "id": 1125,
               "name": "ContextUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2474,
+              "referencedDeclaration": 2452,
               "src": "624:18:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ContextUpgradeable_$2474",
+                "typeIdentifier": "t_contract$_ContextUpgradeable_$2452",
                 "typeString": "contract ContextUpgradeable"
               }
             },
@@ -216,10 +216,10 @@
               "id": 1127,
               "name": "PullPaymentUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3192,
+              "referencedDeclaration": 3170,
               "src": "648:22:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PullPaymentUpgradeable_$3192",
+                "typeIdentifier": "t_contract$_PullPaymentUpgradeable_$3170",
                 "typeString": "contract PullPaymentUpgradeable"
               }
             },
@@ -234,10 +234,10 @@
               "id": 1129,
               "name": "ReentrancyGuardUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4103,
+              "referencedDeclaration": 4081,
               "src": "676:26:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ReentrancyGuardUpgradeable_$4103",
+                "typeIdentifier": "t_contract$_ReentrancyGuardUpgradeable_$4081",
                 "typeString": "contract ReentrancyGuardUpgradeable"
               }
             },
@@ -247,10 +247,10 @@
           }
         ],
         "contractDependencies": [
-          2474,
-          3192,
-          3405,
-          4103
+          2452,
+          3170,
+          3383,
+          4081
         ],
         "contractKind": "contract",
         "documentation": {
@@ -263,10 +263,10 @@
         "id": 1235,
         "linearizedBaseContracts": [
           1235,
-          4103,
-          3192,
-          2474,
-          3405
+          4081,
+          3170,
+          2452,
+          3383
         ],
         "name": "Payment",
         "nodeType": "ContractDefinition",
@@ -278,10 +278,10 @@
               "id": 1131,
               "name": "AddressUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3600,
+              "referencedDeclaration": 3578,
               "src": "715:18:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AddressUpgradeable_$3600",
+                "typeIdentifier": "t_contract$_AddressUpgradeable_$3578",
                 "typeString": "library AddressUpgradeable"
               }
             },
@@ -317,7 +317,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_User_$2429",
+              "typeIdentifier": "t_contract$_User_$2407",
               "typeString": "contract User"
             },
             "typeName": {
@@ -325,10 +325,10 @@
               "id": 1135,
               "name": "User",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2429,
+              "referencedDeclaration": 2407,
               "src": "800:4:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_User_$2429",
+                "typeIdentifier": "t_contract$_User_$2407",
                 "typeString": "contract User"
               }
             },
@@ -550,7 +550,7 @@
                           "lValueRequested": false,
                           "memberName": "isContract",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3425,
+                          "referencedDeclaration": 3403,
                           "src": "1143:15:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$bound_to$_t_address_$",
@@ -645,7 +645,7 @@
                       "name": "__PullPayment_init",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3126,
+                      "referencedDeclaration": 3104,
                       "src": "1213:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
@@ -681,7 +681,7 @@
                       "name": "__ReentrancyGuard_init",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 4068,
+                      "referencedDeclaration": 4046,
                       "src": "1243:22:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
@@ -724,7 +724,7 @@
                       "referencedDeclaration": 1136,
                       "src": "1278:5:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_User_$2429",
+                        "typeIdentifier": "t_contract$_User_$2407",
                         "typeString": "contract User"
                       }
                     },
@@ -758,10 +758,10 @@
                         "name": "User",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2429,
+                        "referencedDeclaration": 2407,
                         "src": "1286:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_User_$2429_$",
+                          "typeIdentifier": "t_type$_t_contract$_User_$2407_$",
                           "typeString": "type(contract User)"
                         }
                       },
@@ -776,13 +776,13 @@
                       "src": "1286:10:3",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_User_$2429",
+                        "typeIdentifier": "t_contract$_User_$2407",
                         "typeString": "contract User"
                       }
                     },
                     "src": "1278:18:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_User_$2429",
+                      "typeIdentifier": "t_contract$_User_$2407",
                       "typeString": "contract User"
                     }
                   },
@@ -812,7 +812,7 @@
                   "name": "initializer",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3382,
+                  "referencedDeclaration": 3360,
                   "src": "1113:11:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -914,7 +914,7 @@
                         "referencedDeclaration": 1136,
                         "src": "1389:5:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_User_$2429",
+                          "typeIdentifier": "t_contract$_User_$2407",
                           "typeString": "contract User"
                         }
                       },
@@ -925,7 +925,7 @@
                       "lValueRequested": false,
                       "memberName": "isSeller",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2428,
+                      "referencedDeclaration": 2406,
                       "src": "1389:14:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -1072,7 +1072,7 @@
                                 "name": "_msgSender",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2458,
+                                "referencedDeclaration": 2436,
                                 "src": "1597:10:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
@@ -1106,7 +1106,7 @@
                             "name": "payments",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3170,
+                            "referencedDeclaration": 3148,
                             "src": "1588:8:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_uint256_$",
@@ -1230,7 +1230,7 @@
                           "name": "_msgSender",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2458,
+                          "referencedDeclaration": 2436,
                           "src": "1675:10:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
@@ -1264,7 +1264,7 @@
                       "name": "withdrawPayments",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3156,
+                      "referencedDeclaration": 3134,
                       "src": "1658:16:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_payable_$returns$__$",
@@ -1314,7 +1314,7 @@
                       "name": "_msgSender",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2458,
+                      "referencedDeclaration": 2436,
                       "src": "1543:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
@@ -1363,7 +1363,7 @@
                   "name": "nonReentrant",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4098,
+                  "referencedDeclaration": 4076,
                   "src": "1557:12:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1447,7 +1447,7 @@
                       "name": "_asyncTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3187,
+                      "referencedDeclaration": 3165,
                       "src": "1874:14:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -1634,7 +1634,7 @@
         "id": 1116,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 3406,
+        "sourceUnit": 3384,
         "src": "57:69:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1645,7 +1645,7 @@
         "id": 1117,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 2475,
+        "sourceUnit": 2453,
         "src": "127:72:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1656,7 +1656,7 @@
         "id": 1118,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 3193,
+        "sourceUnit": 3171,
         "src": "200:80:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1667,7 +1667,7 @@
         "id": 1119,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 3601,
+        "sourceUnit": 3579,
         "src": "281:74:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1678,7 +1678,7 @@
         "id": 1120,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 4104,
+        "sourceUnit": 4082,
         "src": "356:82:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1689,7 +1689,7 @@
         "id": 1121,
         "nodeType": "ImportDirective",
         "scope": 1236,
-        "sourceUnit": 2430,
+        "sourceUnit": 2408,
         "src": "439:20:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1704,10 +1704,10 @@
               "id": 1123,
               "name": "Initializable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3405,
+              "referencedDeclaration": 3383,
               "src": "605:13:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Initializable_$3405",
+                "typeIdentifier": "t_contract$_Initializable_$3383",
                 "typeString": "contract Initializable"
               }
             },
@@ -1722,10 +1722,10 @@
               "id": 1125,
               "name": "ContextUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2474,
+              "referencedDeclaration": 2452,
               "src": "624:18:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ContextUpgradeable_$2474",
+                "typeIdentifier": "t_contract$_ContextUpgradeable_$2452",
                 "typeString": "contract ContextUpgradeable"
               }
             },
@@ -1740,10 +1740,10 @@
               "id": 1127,
               "name": "PullPaymentUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3192,
+              "referencedDeclaration": 3170,
               "src": "648:22:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PullPaymentUpgradeable_$3192",
+                "typeIdentifier": "t_contract$_PullPaymentUpgradeable_$3170",
                 "typeString": "contract PullPaymentUpgradeable"
               }
             },
@@ -1758,10 +1758,10 @@
               "id": 1129,
               "name": "ReentrancyGuardUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4103,
+              "referencedDeclaration": 4081,
               "src": "676:26:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ReentrancyGuardUpgradeable_$4103",
+                "typeIdentifier": "t_contract$_ReentrancyGuardUpgradeable_$4081",
                 "typeString": "contract ReentrancyGuardUpgradeable"
               }
             },
@@ -1771,10 +1771,10 @@
           }
         ],
         "contractDependencies": [
-          2474,
-          3192,
-          3405,
-          4103
+          2452,
+          3170,
+          3383,
+          4081
         ],
         "contractKind": "contract",
         "documentation": {
@@ -1787,10 +1787,10 @@
         "id": 1235,
         "linearizedBaseContracts": [
           1235,
-          4103,
-          3192,
-          2474,
-          3405
+          4081,
+          3170,
+          2452,
+          3383
         ],
         "name": "Payment",
         "nodeType": "ContractDefinition",
@@ -1802,10 +1802,10 @@
               "id": 1131,
               "name": "AddressUpgradeable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3600,
+              "referencedDeclaration": 3578,
               "src": "715:18:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AddressUpgradeable_$3600",
+                "typeIdentifier": "t_contract$_AddressUpgradeable_$3578",
                 "typeString": "library AddressUpgradeable"
               }
             },
@@ -1841,7 +1841,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_User_$2429",
+              "typeIdentifier": "t_contract$_User_$2407",
               "typeString": "contract User"
             },
             "typeName": {
@@ -1849,10 +1849,10 @@
               "id": 1135,
               "name": "User",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2429,
+              "referencedDeclaration": 2407,
               "src": "800:4:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_User_$2429",
+                "typeIdentifier": "t_contract$_User_$2407",
                 "typeString": "contract User"
               }
             },
@@ -2074,7 +2074,7 @@
                           "lValueRequested": false,
                           "memberName": "isContract",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3425,
+                          "referencedDeclaration": 3403,
                           "src": "1143:15:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$bound_to$_t_address_$",
@@ -2169,7 +2169,7 @@
                       "name": "__PullPayment_init",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3126,
+                      "referencedDeclaration": 3104,
                       "src": "1213:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
@@ -2205,7 +2205,7 @@
                       "name": "__ReentrancyGuard_init",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 4068,
+                      "referencedDeclaration": 4046,
                       "src": "1243:22:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
@@ -2248,7 +2248,7 @@
                       "referencedDeclaration": 1136,
                       "src": "1278:5:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_User_$2429",
+                        "typeIdentifier": "t_contract$_User_$2407",
                         "typeString": "contract User"
                       }
                     },
@@ -2282,10 +2282,10 @@
                         "name": "User",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2429,
+                        "referencedDeclaration": 2407,
                         "src": "1286:4:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_User_$2429_$",
+                          "typeIdentifier": "t_type$_t_contract$_User_$2407_$",
                           "typeString": "type(contract User)"
                         }
                       },
@@ -2300,13 +2300,13 @@
                       "src": "1286:10:3",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_User_$2429",
+                        "typeIdentifier": "t_contract$_User_$2407",
                         "typeString": "contract User"
                       }
                     },
                     "src": "1278:18:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_User_$2429",
+                      "typeIdentifier": "t_contract$_User_$2407",
                       "typeString": "contract User"
                     }
                   },
@@ -2336,7 +2336,7 @@
                   "name": "initializer",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3382,
+                  "referencedDeclaration": 3360,
                   "src": "1113:11:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2438,7 +2438,7 @@
                         "referencedDeclaration": 1136,
                         "src": "1389:5:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_User_$2429",
+                          "typeIdentifier": "t_contract$_User_$2407",
                           "typeString": "contract User"
                         }
                       },
@@ -2449,7 +2449,7 @@
                       "lValueRequested": false,
                       "memberName": "isSeller",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2428,
+                      "referencedDeclaration": 2406,
                       "src": "1389:14:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
@@ -2596,7 +2596,7 @@
                                 "name": "_msgSender",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 2458,
+                                "referencedDeclaration": 2436,
                                 "src": "1597:10:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
@@ -2630,7 +2630,7 @@
                             "name": "payments",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3170,
+                            "referencedDeclaration": 3148,
                             "src": "1588:8:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_uint256_$",
@@ -2754,7 +2754,7 @@
                           "name": "_msgSender",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2458,
+                          "referencedDeclaration": 2436,
                           "src": "1675:10:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
@@ -2788,7 +2788,7 @@
                       "name": "withdrawPayments",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3156,
+                      "referencedDeclaration": 3134,
                       "src": "1658:16:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_payable_$returns$__$",
@@ -2838,7 +2838,7 @@
                       "name": "_msgSender",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2458,
+                      "referencedDeclaration": 2436,
                       "src": "1543:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$__$returns$_t_address_payable_$",
@@ -2887,7 +2887,7 @@
                   "name": "nonReentrant",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4098,
+                  "referencedDeclaration": 4076,
                   "src": "1557:12:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2971,7 +2971,7 @@
                       "name": "_asyncTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3187,
+                      "referencedDeclaration": 3165,
                       "src": "1874:14:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -3143,12 +3143,12 @@
     "1606275492212": {
       "events": {},
       "links": {},
-      "address": "0xD95963cbA997057f8659e9605AaDbd0bC04b80E4",
+      "address": "0xf0F525F515bB64FaBC725c0fe208e9C2f162cB7a",
       "transactionHash": "0x99dfa659aac18d7b6767cddf73a8b0885b543db371fa21b6529a920a88dc05d7"
     }
   },
   "schemaVersion": "3.3.2",
-  "updatedAt": "2020-11-25T10:23:09.193Z",
+  "updatedAt": "2020-11-25T15:26:26.532Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Susanto Wu",

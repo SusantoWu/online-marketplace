@@ -23,14 +23,20 @@ export const getPayments = async (account) => {
   return paymentContract.methods.payments(account).call();
 }
 
-export const withdraw = async (sender) => {
+export const withdraw = async (sender, callback) => {
   const paymentContract = await getContract();
-  return paymentContract.methods.withdraw().send({ from: sender });
+  return paymentContract.methods.withdraw().send({ from: sender })
+    .on('receipt', (receipt) => {
+      if (callback.receipt) {
+        callback.receipt(receipt);
+      }
+    });
 }
 
-export const subscribeEvent = async (eventname, callback, filter) => {
+/* Note: unable to listen to internal contract events, using above method. */
+/* export const subscribeEvent = async (callback, filter) => {
   const paymentContract = await getContract();
-  return paymentContract.events[eventname]({ filter })
+  return paymentContract.events.allEvents({ filter })
     .on('data', (event) => {
       if (callback.data) {
         callback.data(event);
@@ -47,4 +53,4 @@ export const subscribeEvent = async (eventname, callback, filter) => {
       }
       console.error(error)
     });
-}
+} */

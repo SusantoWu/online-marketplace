@@ -267,31 +267,40 @@ contract Store is Initializable, ContextUpgradeable {
     /**
      * @param page start index
      * @param count number of products
-     * @return array of product ids
+     * @return start index
+     * @return end index
      * @return prev page
      * @return next page
      */
-    function getProducts(uint256 page, uint256 count)
+    function getProductPaginate(uint256 page, uint256 count)
         public
         view
         returns (
-            uint256[] memory,
+            uint256,
+            uint256,
             uint256,
             uint256
         )
     {
-        (uint256 start, uint256 end, uint256 prev, uint256 next) = paginate(
-            page,
-            count,
-            _productList.length()
-        );
-        uint256[] memory productIds = new uint256[](end.sub(start));
+        return paginate(page, count, _productList.length());
+    }
 
-        for (uint256 i = start; i < end; i++) {
-            productIds.push(_productList.at(i));
-        }
-
-        return (productIds, prev, next);
+    /**
+     * @param index product set element index
+     * @return product information
+     */
+    function getProductListProduct(uint256 index)
+        public
+        view
+        returns (
+            uint256,
+            string memory,
+            uint256,
+            uint256,
+            uint256
+        )
+    {
+        return getProduct(_productList.at(index));
     }
 
     /**

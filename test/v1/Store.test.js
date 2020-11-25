@@ -112,17 +112,5 @@ contract('Store', accounts => {
         buyer
       });
     });
-
-    it('get products', async () => {
-      for (let i = 0; i < 10; i++) {
-        await this.store.add(productName, quantityBN, priceBN, storeId, { from: seller });
-      }
-
-      const { '0': ids, '1': prev, '2': next } = await this.store.getProducts(0, 3);
-
-      expect(ids.length).to.equal(3);
-      expect(prev).to.equal(0);
-      expect(next).to.equal(1);
-    });
   });
 });
