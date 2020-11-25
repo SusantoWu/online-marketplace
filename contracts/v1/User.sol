@@ -11,13 +11,18 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
  * @dev Manage all users relations and permissions
  */
 contract User is Initializable, OwnableUpgradeable, AccessControlUpgradeable {
+    string private constant ADMIN_STRING = "ADMIN_ROLE";
+    string private constant SELLER_STRING = "SELLER_ROLE";
+    string private constant BUYER_STRING = "BUYER_ROLE";
+
     /**
      * @dev Available roles:
      * - Admin: to manage seller.
      * - Seller: to manage stores and products.
      */
-    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
-    bytes32 public constant SELLER_ROLE = keccak256("SELLER_ROLE");
+    bytes32 public constant ADMIN_ROLE = keccak256(abi.encode(ADMIN_STRING));
+    bytes32 public constant SELLER_ROLE = keccak256(abi.encode(SELLER_STRING));
+    bytes32 public constant BUYER_ROLE = keccak256(abi.encode(BUYER_STRING));
 
     /**
      * @dev Initialize Ownable constructur to set deployer as owner,
@@ -40,6 +45,14 @@ contract User is Initializable, OwnableUpgradeable, AccessControlUpgradeable {
      */
     modifier accountNotOwner(address account) {
         require(account != owner(), "User: account is owner");
+        _;
+    }
+
+    /**
+     * @dev Throw if function call with non admin account.
+     */
+    modifier onlyAdmin() {
+        require(isAdmin(_msgSender()), "User: address is not allowed");
         _;
     }
 
@@ -72,9 +85,29 @@ contract User is Initializable, OwnableUpgradeable, AccessControlUpgradeable {
     }
 
     /**
+     * @dev Return true if account is admin, false otherwise.
+     */
+    function getRole(address account) public view returns (string memory role) {
+        if (isAdmin(account)) {
+            role = ADMIN_STRING;
+        } else if (isSeller(account)) {
+            role = SELLER_STRING;
+        } else {
+            role = BUYER_STRING;
+        }
+    }
+
+    /**
+     * @dev Return true if account is admin, false otherwise.
+     */
+    function isAdmin(address account) public view returns (bool) {
+        return hasRole(ADMIN_ROLE, account);
+    }
+
+    /**
      * @dev Return true if account is seller, false otherwise.
      */
-    function isSeller(address account) external view returns (bool) {
+    function isSeller(address account) public view returns (bool) {
         return hasRole(SELLER_ROLE, account);
     }
 }

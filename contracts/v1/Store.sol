@@ -53,10 +53,12 @@ contract Store is Initializable, ContextUpgradeable {
      * @dev Store can have multiples products.
      * - Counter to facilitate product identifier
      * - Store Id to products list map
+     * - Product id set to facilitate pagination
      * - Id to Product map
      */
     CountersUpgradeable.Counter productCounter;
     mapping(uint256 => EnumerableSetUpgradeable.UintSet) private _storeProducts;
+    EnumerableSetUpgradeable.UintSet private _productList;
     mapping(uint256 => Product) private _products;
 
     /* Events */
@@ -177,7 +179,7 @@ contract Store is Initializable, ContextUpgradeable {
      */
     function close(uint256 id) public onlySeller onlyStoreOwner(id) {
         for (uint256 i = 0; i < _storeProducts[id].length(); i++) {
-            remove(id, i);
+            remove(id, getStoreProductId(id, i));
         }
 
         if (_sellerStores[_msgSender()].remove(id)) {
@@ -211,6 +213,7 @@ contract Store is Initializable, ContextUpgradeable {
                 price: price,
                 storeId: storeId
             });
+            _productList.add(id);
             productCounter.increment();
             emit ProductAdded(id, name, quantity, price, storeId, _msgSender());
         }
@@ -220,16 +223,33 @@ contract Store is Initializable, ContextUpgradeable {
      * @param storeId store identifier
      * @return number of products for store
      */
-    function getProductCount(uint256 storeId) public view returns (uint256) {
+    function getStoreProductCount(uint256 storeId)
+        public
+        view
+        returns (uint256)
+    {
         return _storeProducts[storeId].length();
     }
 
     /**
+     * @param storeId store identifier
      * @param index product set element index
-     * @return product identifier
+     * @return product id
+     */
+    function getStoreProductId(uint256 storeId, uint256 index)
+        public
+        view
+        returns (uint256)
+    {
+        return _storeProducts[storeId].at(index);
+    }
+
+    /**
+     * @param storeId store identifier
+     * @param index product set element index
      * @return product information
      */
-    function getProduct(uint256 storeId, uint256 index)
+    function getStoreProduct(uint256 storeId, uint256 index)
         public
         view
         returns (
@@ -240,7 +260,55 @@ contract Store is Initializable, ContextUpgradeable {
             uint256
         )
     {
-        uint256 id = getProductId(storeId, index);
+        uint256 id = getStoreProductId(storeId, index);
+        return getProduct(id);
+    }
+
+    /**
+     * @param page start index
+     * @param count number of products
+     * @return array of product ids
+     * @return prev page
+     * @return next page
+     */
+    function getProducts(uint256 page, uint256 count)
+        public
+        view
+        returns (
+            uint256[] memory,
+            uint256,
+            uint256
+        )
+    {
+        (uint256 start, uint256 end, uint256 prev, uint256 next) = paginate(
+            page,
+            count,
+            _productList.length()
+        );
+        uint256[] memory productIds = new uint256[](end.sub(start));
+
+        for (uint256 i = start; i < end; i++) {
+            productIds.push(_productList.at(i));
+        }
+
+        return (productIds, prev, next);
+    }
+
+    /**
+     * @param id product identifier
+     * @return product information
+     */
+    function getProduct(uint256 id)
+        public
+        view
+        returns (
+            uint256,
+            string memory,
+            uint256,
+            uint256,
+            uint256
+        )
+    {
         Product storage product = _products[id];
         return (
             id,
@@ -252,30 +320,18 @@ contract Store is Initializable, ContextUpgradeable {
     }
 
     /**
-     * @param index product set element index
-     * @return product id
-     */
-    function getProductId(uint256 storeId, uint256 index)
-        public
-        view
-        returns (uint256)
-    {
-        return _storeProducts[storeId].at(index);
-    }
-
-    /**
      * @dev Remove a product
      * @param storeId store identifier
-     * @param index product set element index
+     * @param id product identifier
      */
-    function remove(uint256 storeId, uint256 index)
+    function remove(uint256 storeId, uint256 id)
         public
         onlySeller
         onlyStoreOwner(storeId)
     {
-        uint256 id = getProductId(storeId, index);
         if (_storeProducts[storeId].remove(id)) {
             delete (_products[id]);
+            _productList.remove(id);
             emit ProductRemoved(id, storeId, _msgSender());
         }
     }
@@ -283,17 +339,16 @@ contract Store is Initializable, ContextUpgradeable {
     /**
      * @dev Update a product price
      * @param storeId store identifier
-     * @param index product set element index
+     * @param id product identifier
      * @param price new product price
      */
     function update(
         uint256 storeId,
-        uint256 index,
+        uint256 id,
         uint256 price
     ) public onlySeller onlyStoreOwner(storeId) {
         require(price > 0);
 
-        uint256 id = getProductId(storeId, index);
         uint256 oldPrice = _products[id].price;
         _products[id].price = price;
 
@@ -378,5 +433,50 @@ contract Store is Initializable, ContextUpgradeable {
         Product storage product = _products[id];
 
         _payment.pay{value: total}(_stores[product.storeId].seller, total);
+    }
+
+    /* PURE */
+    // TODO: can be move to Library
+
+    /**
+     * @param page pagination based on count
+     * @param count number of items
+     * @param total list length
+     * @return start index
+     * @return end length
+     * @return prev page
+     * @return next page
+     */
+    function paginate(
+        uint256 page,
+        uint256 count,
+        uint256 total
+    )
+        internal
+        pure
+        returns (
+            uint256 start,
+            uint256 end,
+            uint256 prev,
+            uint256 next
+        )
+    {
+        start = page.mul(count);
+        end = page.add(1).mul(count);
+        next = page;
+        prev = page;
+
+        if (end > total) {
+            // Not over list length
+            end = total;
+        } else {
+            // Next only if more items.
+            next = page.add(1);
+        }
+
+        // Zero is the first page
+        if (prev > 0) {
+            prev = page.sub(1);
+        }
     }
 }
