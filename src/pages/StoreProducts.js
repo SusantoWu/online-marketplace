@@ -4,6 +4,7 @@ import { Heading, Input, Card, Text, Button, Flex, Box, theme, Modal } from 'rim
 import styled from 'styled-components';
 import Bids from '../components/BIds';
 import Timer from '../components/Timer';
+import { etherToWei, weiToEther } from '../helpers/parse';
 import { startAuction, getAuctions, endAuction, subscribeEvent as auctionSubscribeEvent } from '../services/auction';
 import { getStoreProducts, addProduct, deleteProduct, updateProduct, subscribeEvent } from '../services/store';
 
@@ -98,7 +99,7 @@ class StoreProducts extends Component {
         this.setState(({ auctions }) => ({
           auctions: auctions.filter((auction) => auction.product !== product),
         }))
-        alert(`Paid ${price} Ether to store`);
+        alert(`Paid ${weiToEther(price)} ETH to store`);
       }
     });
 
@@ -141,20 +142,21 @@ class StoreProducts extends Component {
   handleSubmit() {
     const { account, match: { params: { id } } } = this.props;
     const { edit, name, quantity, price } = this.state;
+    const actualPrice = etherToWei(price);
 
-    if (!name.length || quantity <= 0 || price <= 0) {
+    if (!name.length || quantity <= 0 || actualPrice <= 0) {
       alert("Invalid input!");
       return;
     }
 
     if (!edit) {
-      addProduct(name, quantity, price, id, account).then(() => {
+      addProduct(name, quantity, actualPrice, id, account).then(() => {
         this.reset();
       });
     } else {
       const product = this.state.products.find((product) => product.id === edit);
-      if (price !== product.price) {
-        updateProduct(id, edit, price, account).then(() => {
+      if (actualPrice !== product.price) {
+        updateProduct(id, edit, actualPrice, account).then(() => {
           this.reset();
         });
       } else {
@@ -170,16 +172,17 @@ class StoreProducts extends Component {
   handleAuction() {
     const { account } = this.props;
     const { auction, open, close, price } = this.state;
+    const actualPrice = etherToWei(price);
 
     const openTimestamp = Date.parse(open) / 1000;
     const closeTimestamp = Date.parse(close) / 1000;
 
-    if (closeTimestamp <= openTimestamp || price <= 0) {
+    if (closeTimestamp <= openTimestamp || actualPrice <= 0) {
       alert("Invalid input!");
       return;
     }
 
-    startAuction(openTimestamp, closeTimestamp, auction, price, account).then(() => {
+    startAuction(openTimestamp, closeTimestamp, auction, actualPrice, account).then(() => {
       this.reset();
     });
   }
@@ -196,7 +199,7 @@ class StoreProducts extends Component {
     this.setState({
       auction: id,
       name,
-      price,
+      price: weiToEther(price),
       open: '',
       close: ''
     });
@@ -211,7 +214,7 @@ class StoreProducts extends Component {
       edit: product.id,
       name: product.name,
       quantity: product.quantity,
-      price: product.price
+      price: weiToEther(product.price)
     });
   }
 
@@ -233,7 +236,7 @@ class StoreProducts extends Component {
                 {!!product.product && (<Timer auction={product} />)}
                 <Text>{product.name}</Text>
                 <Text># {product.quantity}</Text>
-                <Text>ETH {product.price} {!!product.startPrice && `(Auct. ETH ${product.startPrice})`}</Text>
+                <Text>{weiToEther(product.price)} ETH {!!product.startPrice && `(Auct. ${weiToEther(product.startPrice)} ETH)`}</Text>
                 <Box mt={2} textAlign="right">
                   {!!product.product
                     ? <Button

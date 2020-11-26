@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getAuctions, bidAuction, getUserBids, subscribeEvent as auctionSubsribeEVent } from '../services/auction';
 import { getProducts, buyProduct, subscribeEvent } from '../services/store';
 import Timer from '../components/Timer';
+import { etherToWei, weiToEther } from '../helpers/parse';
 
 const Container = styled(Flex)`
   margin-left: -${theme.space[2]}px;
@@ -55,7 +56,7 @@ class Products extends Component {
     auctionSubsribeEVent('Bidded', {
       data: (event) => {
         const { price } = event.returnValues;
-        alert(`Bidded success! Spent ETH ${price}.`);
+        alert(`Bidded success! Spent ${weiToEther(price)} ETH.`);
       }
     });
 
@@ -126,18 +127,19 @@ class Products extends Component {
   handleBid({ id, startPrice, bidded }) {
     const { account } = this.props;
     const { value } = this.state;
+    const actualValue = etherToWei(value);
 
     if (bidded) {
       alert('Not allow to bid more than once!');
       return;
     }
 
-    if (value <= 0 || value < startPrice) {
+    if (actualValue <= 0 || actualValue < startPrice) {
       alert('Invalid input!');
       return;
     }
 
-    bidAuction(id, value, account).then(() => {
+    bidAuction(id, actualValue, account).then(() => {
       this.setState({ value: '' });
     });
   }
@@ -160,8 +162,8 @@ class Products extends Component {
                 <Text>
                   {
                     !!product.product && product.opened
-                      ? `Auct. ETH ${product.startPrice}`
-                      : `ETH ${product.price}`
+                      ? `Auct. ${weiToEther(product.startPrice)} ETH`
+                      : `${weiToEther(product.price)} ETH`
                   }
                   {
                     !!product.product && product.bidded &&

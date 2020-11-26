@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Heading, Input, Card, Text, Button, Flex, Box, theme } from 'rimble-ui';
 import styled from 'styled-components';
 import { getStores, addStore, subscribeEvent, deleteStore } from '../services/store';
-import { getPayments, withdraw, subscribeEvent as paymentSubscribeEvent } from '../services/payment';
+import { getPayments, withdraw } from '../services/payment';
+import { weiToEther } from '../helpers/parse';
 
 const Container = styled(Flex)`
   margin-left: -${theme.space[2]}px;
@@ -24,7 +25,7 @@ const ButtonProducts = (id) => <Link to={`/stores/${id}`}><Button icon="ViewList
 class Stores extends Component {
   constructor(props) {
     super(props);
-    this.state = { stores: [], payments: 0, value: '' };
+    this.state = { stores: [], payments: '0', value: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -93,7 +94,7 @@ class Stores extends Component {
         this.setState({
           payments: 0,
         });
-        alert(`You have withdrawn ${payments} Ether to ${account}`);
+        alert(`You have withdrawn ${weiToEther(payments)} ETH to ${account}`);
       }
     });
   }
@@ -109,7 +110,7 @@ class Stores extends Component {
               icon="FileDownload"
               iconpos="right"
               onClick={this.handleWithdraw}>
-              ETH {this.state.payments}
+              {weiToEther(this.state.payments)} ETH
             </Button>
           </Flex>
         </Flex>

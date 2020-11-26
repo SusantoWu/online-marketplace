@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Table, Modal, Box, Flex, Button, EthAddress } from 'rimble-ui';
+import { weiToEther } from '../helpers/parse';
 import { getBids, endAuction } from '../services/auction';
 
 class Bids extends Component {
@@ -60,7 +61,7 @@ class Bids extends Component {
               {this.state.bids.map((bid, i) => (
                 <tr key={i}>
                   <td><EthAddress address={bid.bidder} /></td>
-                  <td>{bid.price} ETH</td>
+                  <td>{weiToEther(bid.price)} ETH</td>
                 </tr>
               ))}
             </tbody>
