@@ -28,12 +28,19 @@ class Accounts extends Component {
         }))
       }
     }, this.props.role);
+
+    this.initialise();
   }
 
   componentDidUpdate(prevProps) {
-    const { account } = this.props;
+    if (prevProps.account !== this.props.account) {
+      this.initialise();
+    }
+  }
 
-    if (account && prevProps.account !== account) {
+  initialise() {
+    const { account } = this.props;
+    if (account) {
       this.props.getAccounts(account).then((accounts) => this.setState({ accounts }));
     }
   }

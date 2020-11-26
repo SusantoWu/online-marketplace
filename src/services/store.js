@@ -84,7 +84,7 @@ export const getProducts = async (page, count, sender) => {
     );
   }
   return Promise.all(products)
-    .then((data) => ({ data, prev: paginate.prev, next: paginate.next }));
+    .then((data) => ({ data, prev: parseInt(paginate.prev), next: parseInt(paginate.next) }));
 }
 
 export const buyProduct = async (productId, quantity, total, sender) => {

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import { Heading, Input, Card, Text, Button, Flex, Box, theme } from 'rimble-ui';
+import { Heading, Input, Card, Text, Button, Flex, Box, theme, Modal } from 'rimble-ui';
 import styled from 'styled-components';
+import Bids from '../components/BIds';
+import Timer from '../components/Timer';
+import { startAuction, getAuctions, endAuction, subscribeEvent as auctionSubscribeEvent } from '../services/auction';
 import { getStoreProducts, addProduct, deleteProduct, updateProduct, subscribeEvent } from '../services/store';
 
 const Container = styled(Flex)`
@@ -26,12 +29,28 @@ const InputProduct = styled(Input)`
 class StoreProducts extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], name: '', quantity: '', price: '', edit: null };
+    this.state = {
+      products: [],
+      auctions: [],
+      name: '',
+      quantity: '',
+      price: '',
+      open: '',
+      close: '',
+      edit: null,
+      auction: null,
+      product: null
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleAuction = this.handleAuction.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleBids = this.handleBids.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +83,25 @@ class StoreProducts extends Component {
       }
     }, { storeId: id });
 
+    auctionSubscribeEvent('AuctionStarted', {
+      data: ({ returnValues }) => {
+        const { product, openTime, closeTime, startPrice } = returnValues;
+        this.setState(({ auctions }) => ({
+          auctions: [...auctions, { product, openTime, closeTime, startPrice }],
+        }))
+      }
+    });
+
+    auctionSubscribeEvent('AuctionEnded', {
+      data: ({ returnValues }) => {
+        const { product, price } = returnValues;
+        this.setState(({ auctions }) => ({
+          auctions: auctions.filter((auction) => auction.product !== product),
+        }))
+        alert(`Paid ${price} Ether to store`);
+      }
+    });
+
     this.initialise();
   }
 
@@ -76,7 +114,11 @@ class StoreProducts extends Component {
   initialise() {
     const { account, match: { params: { id } } } = this.props;
     if (account) {
-      getStoreProducts(id, account).then((products) => this.setState({ products }));
+      getStoreProducts(id, account).then((products) => {
+        this.setState({ products });
+        getAuctions(products.map((product) => product.id), account)
+          .then((auctions) => this.setState({ auctions }));
+      });
     }
   }
 
@@ -85,7 +127,10 @@ class StoreProducts extends Component {
       name: '',
       quantity: '',
       price: '',
-      edit: null
+      open: '',
+      close: '',
+      edit: null,
+      auction: null,
     })
   }
 
@@ -118,6 +163,49 @@ class StoreProducts extends Component {
     }
   }
 
+  productAuction({ id }) {
+    return this.state.auctions.find(({ product }) => product === id);
+  }
+
+  handleAuction() {
+    const { account } = this.props;
+    const { auction, open, close, price } = this.state;
+
+    const openTimestamp = Date.parse(open) / 1000;
+    const closeTimestamp = Date.parse(close) / 1000;
+
+    if (closeTimestamp <= openTimestamp || price <= 0) {
+      alert("Invalid input!");
+      return;
+    }
+
+    startAuction(openTimestamp, closeTimestamp, auction, price, account).then(() => {
+      this.reset();
+    });
+  }
+
+  handleBids(product) {
+    this.setState({ product });
+  }
+
+  handleClose() {
+    this.setState({ product: null });
+  }
+
+  handleOpen({ id, name, price }) {
+    this.setState({
+      auction: id,
+      name,
+      price,
+      open: '',
+      close: ''
+    });
+  }
+
+  handleCancel() {
+    this.reset();
+  }
+
   handleEdit(product) {
     this.setState({
       edit: product.id,
@@ -134,19 +222,45 @@ class StoreProducts extends Component {
   }
 
   render() {
+    const productAuctions = this.state.products.map((product) => ({ ...product, ...this.productAuction(product) }));
     return (
       <React.Fragment>
         <Heading>Products</Heading>
         <Container>
-          {this.state.products.map((product, i) => (
+          {productAuctions.map((product, i) => (
             <ContainerItem key={i}>
               <Card>
+                {!!product.product && (<Timer auction={product} />)}
                 <Text>{product.name}</Text>
                 <Text># {product.quantity}</Text>
-                <Text>ETH {product.price}</Text>
+                <Text>ETH {product.price} {!!product.startPrice && `(Auct. ETH ${product.startPrice})`}</Text>
                 <Box mt={2} textAlign="right">
-                  <Button icon="Edit" icononly onClick={() => this.handleEdit(product)} />
-                  <Button icon="Delete" icononly ml={3} onClick={() => this.handleDelete(product.id)} />
+                  {!!product.product
+                    ? <Button
+                      icon="GridOn"
+                      icononly
+                      onClick={() => this.handleBids(product)}
+                    /> :
+                    <Button
+                      icon="Home"
+                      icononly
+                      onClick={() => this.handleOpen(product)}
+                    />
+                  }
+                  <Button
+                    icon="Edit"
+                    icononly
+                    ml={2}
+                    disabled={!!product.product}
+                    onClick={() => this.handleEdit(product)}
+                  />
+                  <Button
+                    icon="Delete"
+                    icononly
+                    ml={2}
+                    disabled={!!product.product}
+                    onClick={() => this.handleDelete(product.id)}
+                  />
                 </Box>
               </Card>
             </ContainerItem>
@@ -177,6 +291,39 @@ class StoreProducts extends Component {
             <Button icon="Done" onClick={this.handleSubmit}>Done</Button>
           </Box>
         </Card>
+        <Modal isOpen={!!this.state.auction}>
+          <Card width="500px" p={0}>
+            <Box p={4} mb={3}>
+              <Text>{this.state.name}</Text>
+              <InputProduct
+                type="number"
+                value={this.state.price}
+                onChange={(e) => this.handleChange('price', e)}
+              />
+              <InputProduct
+                type="datetime-local"
+                value={this.state.open}
+                onChange={(e) => this.handleChange('open', e)}
+              />
+              <InputProduct
+                type="datetime-local"
+                value={this.state.close}
+                onChange={(e) => this.handleChange('close', e)}
+              />
+            </Box>
+            <Flex
+              px={4}
+              py={3}
+              borderTop={1}
+              borderColor={"#E8E8E8"}
+              justifyContent={"flex-end"}
+            >
+              <Button.Outline onClick={this.handleCancel}>Cancel</Button.Outline>
+              <Button ml={3} onClick={this.handleAuction}>Confirm</Button>
+            </Flex>
+          </Card>
+        </Modal>
+        {this.state.product && <Bids account={this.props.account} product={this.state.product} close={this.handleClose} />}
       </React.Fragment>
     )
   }

@@ -108,10 +108,7 @@ contract Auction is Initializable, ContextUpgradeable {
             closeTime > openTime,
             "Auction: close time earlier than open time"
         );
-        require(
-            !hasAuction(product) || !isOpen(product),
-            "Auction: product in auction"
-        );
+        require(!isOpen(product), "Auction: product in auction");
 
         _auctions[product] = AuctionDetails({
             openTime: openTime,
@@ -203,8 +200,10 @@ contract Auction is Initializable, ContextUpgradeable {
 
         (address bidder, uint256 price) = getHighestBid(product);
 
-        // Push the highest bid to store payment.
-        _store.settle{value: price}(product, 1, price);
+        if (price > 0) {
+            // Push the highest bid to store payment.
+            _store.settle{value: price}(product, 1, price);
+        }
 
         clear(product, bidder);
 
@@ -266,12 +265,13 @@ contract Auction is Initializable, ContextUpgradeable {
      * @return true if the auction is open, false otherwise.
      */
     function isOpen(uint256 product) public view returns (bool) {
-        require(hasAuction(product));
-
-        AuctionDetails storage auction = _auctions[product];
-        return
-            block.timestamp >= auction.openTime &&
-            block.timestamp <= auction.closeTime;
+        if (hasAuction(product)) {
+            AuctionDetails storage auction = _auctions[product];
+            return
+                block.timestamp >= auction.openTime &&
+                block.timestamp <= auction.closeTime;
+        }
+        return false;
     }
 
     /**
@@ -279,10 +279,11 @@ contract Auction is Initializable, ContextUpgradeable {
      * @return Whether auction period has elapsed
      */
     function hasClosed(uint256 product) public view returns (bool) {
-        require(hasAuction(product));
-
-        AuctionDetails storage auction = _auctions[product];
-        return block.timestamp > auction.closeTime;
+        if (hasAuction(product)) {
+            AuctionDetails storage auction = _auctions[product];
+            return block.timestamp > auction.closeTime;
+        }
+        return false;
     }
 
     /**

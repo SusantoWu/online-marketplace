@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Card, Text, Button, Flex, Box, theme, Loader, Input } from 'rimble-ui';
 import styled from 'styled-components';
+import { getAuctions, bidAuction, getUserBids, subscribeEvent as auctionSubsribeEVent } from '../services/auction';
 import { getProducts, buyProduct, subscribeEvent } from '../services/store';
+import Timer from '../components/Timer';
 
 const Container = styled(Flex)`
   margin-left: -${theme.space[2]}px;
@@ -20,9 +22,19 @@ const ContainerItem = styled(Box)`
 class Products extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], prev: 0, next: 0, loading: false, stop: false, value: '', hovered: null };
+    this.state = {
+      products: [],
+      auctions: [],
+      prev: 0,
+      next: 0,
+      loading: false,
+      stop: false,
+      value: '',
+      hovered: null
+    };
 
     this.handleBuy = this.handleBuy.bind(this);
+    this.handleBid = this.handleBid.bind(this);
     this.handleLoad = this.handleLoad.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
@@ -37,6 +49,13 @@ class Products extends Component {
           products: products.map((product) => product.id === id ? { ...product, quantity } : product),
         }))
         alert(`ProductBought success! Spent ETH ${paid}.`);
+      }
+    });
+
+    auctionSubsribeEVent('Bidded', {
+      data: (event) => {
+        const { price } = event.returnValues;
+        alert(`Bidded success! Spent ETH ${price}.`);
       }
     });
 
@@ -62,7 +81,13 @@ class Products extends Component {
             prev: result.prev,
             next: result.next,
             stop: next === result.next
-          }))
+          }));
+          getAuctions(result.data.map((product) => product.id), account)
+            .then((data) => {
+              this.setState(({ auctions }) => ({
+                auctions: [...auctions, ...data]
+              }));
+            });
         })
         .finally(() => this.setState({ loading: false }));
     }
@@ -93,25 +118,75 @@ class Products extends Component {
       return;
     }
 
-    buyProduct(id, value, price * value, account);
+    buyProduct(id, value, price * value, account).then(() => {
+      this.setState({ value: '' });
+    });
+  }
+
+  handleBid({ id, startPrice, bidded }) {
+    const { account } = this.props;
+    const { value } = this.state;
+
+    if (bidded) {
+      alert('Not allow to bid more than once!');
+      return;
+    }
+
+    if (value <= 0 || value < startPrice) {
+      alert('Invalid input!');
+      return;
+    }
+
+    bidAuction(id, value, account).then(() => {
+      this.setState({ value: '' });
+    });
+  }
+
+  productAuction({ id }) {
+    return this.state.auctions.find(({ product }) => product === id);
   }
 
   render() {
+    const productAuctions = this.state.products.map((product) => ({ ...product, ...this.productAuction(product) }));
     return (
       <React.Fragment>
         <Container>
-          {this.state.products.map((product, i) => (
+          {productAuctions.map((product, i) => (
             <ContainerItem key={i}>
               <Card onMouseEnter={() => this.handleEnter(product.id)} onMouseLeave={() => this.handleLeave()}>
+                {!!product.product && product.opened && (<Timer auction={product} />)}
                 <Text>{product.name}</Text>
                 <Text># {product.quantity}</Text>
-                <Text>ETH {product.price}</Text>
+                <Text>
+                  {
+                    !!product.product && product.opened
+                      ? `Auct. ETH ${product.startPrice}`
+                      : `ETH ${product.price}`
+                  }
+                  {
+                    !!product.product && product.bidded &&
+                    ` (Bidded)`
+                  }
+                </Text>
                 <Flex mt={2} height="48px" width="100%">
                   {this.state.hovered === product.id &&
-                    (<React.Fragment>
-                      <Input flex={1} width="100%" type="number" value={this.state.value} onChange={this.handleChange} />
-                      <Button ml={3} icon="ShoppingBasket" icononly onClick={() => this.handleBuy(product)} />
-                    </React.Fragment>)
+                    (
+                      <React.Fragment>
+                        <Input
+                          flex={1}
+                          width="100%"
+                          type="number"
+                          value={this.state.value}
+                          onChange={this.handleChange}
+                        />
+                        <Button
+                          ml={3}
+                          icon="ShoppingBasket"
+                          icononly
+                          onClick={() => !!product.product && product.opened ? this.handleBid(product) : this.handleBuy(product)}
+                        />
+                      </React.Fragment>
+                    )
                   }
                 </Flex>
               </Card>
