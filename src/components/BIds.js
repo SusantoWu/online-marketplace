@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Table, Modal, Box, Flex, Button, EthAddress } from 'rimble-ui';
+import { Card, Table, Modal, Flex, Button, EthAddress } from 'rimble-ui';
 import { weiToEther } from '../helpers/parse';
 import { getBids, endAuction } from '../services/auction';
 

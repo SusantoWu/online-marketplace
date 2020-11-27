@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Heading, Input, Card, EthAddress, Button, Flex } from 'rimble-ui';
-import role from '../role';
 import { subscribeEvent } from '../services/user';
 
 class Accounts extends Component {

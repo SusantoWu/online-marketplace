@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { Heading, Input, Card, Text, Button, Flex, Box, theme, Modal } from 'rimble-ui';
 import styled from 'styled-components';
-import Bids from '../components/BIds';
+import Bids from '../components/Bids';
 import Timer from '../components/Timer';
 import { etherToWei, weiToEther } from '../helpers/parse';
 import { startAuction, getAuctions, subscribeEvent as auctionSubscribeEvent } from '../services/auction';
