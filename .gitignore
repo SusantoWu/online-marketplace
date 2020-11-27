@@ -27,3 +27,4 @@ truffle-config-local.js
 /src/contracts
 
 .openzeppelin
+.firebase
