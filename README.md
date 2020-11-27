@@ -40,3 +40,7 @@ npm start
 ```
 
 ## Online
+
+Application host at https://marketplace-5facf.web.app/
+
+Setup Metamask to `Rinkeby Test Network`.
