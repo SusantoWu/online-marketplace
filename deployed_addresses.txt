@@ -1,0 +1,20 @@
+Test network: rinkeby
+
+Addresses
+
+==User==
+contract: 0x734d84EBCF7028A499792Fdf2Bd19e2C28A57239
+ProxyAdmin: 0xC346a51B3F7b4eb353CCDC4bE45A02b3F926f2F0
+AdminUpgradeabilityProxy: 0x1Ca32af8CfbF0b6434fEb789E5967B5bb8E24D90
+
+==Payment==
+contract: 0xfC8b0Bc31de339ec407bdC798ABd212E66908AE4
+AdminUpgradeabilityProxy: 0xF13b16ca2cA91BcBd0D8d08b9c2F36FD88F3cfA5
+
+==Store==
+contract: 0xE4abdADee99d6bB7a4d86B653c01d8679E6A6dc4
+AdminUpgradeabilityProxy: 0x89EB27ff72127878151224419BD7B23Ac4649118
+
+==Auction==
+contract: 0xE1faCfAf8bDd6Ff26186A9474AAeB3800E358528
+AdminUpgradeabilityProxy: 0xD5465fFF785ef48e3F0a72b53165DFD2aeFEc78d
