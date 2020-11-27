@@ -72,14 +72,14 @@ export const updateProduct = async (storeId, productId, price, sender) => {
   return storeContract.methods.update(storeId, productId, price).send({ from: sender });
 }
 
-export const getProducts = async (page, count, sender) => {
+export const getProducts = async (page, count) => {
   const storeContract = await getContract();
   const paginate = resultToObject(
-    await storeContract.methods.getProductPaginate(page, count).call({ from: sender }), 'start', 'end', 'prev', 'next'
+    await storeContract.methods.getProductPaginate(page, count).call(), 'start', 'end', 'prev', 'next'
   );
   const products = [];
   for (let i = parseInt(paginate.start); i < parseInt(paginate.end); i++) {
-    products.push(storeContract.methods.getProductListProduct(i).call({ from: sender })
+    products.push(storeContract.methods.getProductListProduct(i).call()
       .then(parseProduct)
     );
   }

@@ -1,13 +1,10 @@
 import Web3 from "web3";
 
-const getWeb3 = async () => {
+const getWeb3 = () => {
   // Modern dapp browsers...
   if (window.ethereum) {
     const web3 = new Web3(window.ethereum);
     try {
-      // Request account access if needed
-      await window.ethereum.enable();
-      // Acccounts now exposed
       return web3;
     } catch (error) {
       throw error;
@@ -52,4 +49,32 @@ const connectWeb3 = () =>
     }
   });
 
-export { connectWeb3Onload, connectWeb3 };
+const subscribeMetamask = (callback) => {
+  if (callback.accountChanged) {
+    window.ethereum.on('accountsChanged', (accounts) => {
+      callback.accountChanged(accounts[0])
+    });
+  }
+
+  /* window.ethereum.on('chainChanged', (chainId) => {
+    window.location.reload();
+  }); */
+}
+
+const getAccount = () => {
+  const web3 = getWeb3();
+  return web3.eth.getAccounts().then((accounts) => accounts[0]);
+}
+
+const connectMetamask = () => {
+  return window.ethereum
+    .request({ method: 'eth_requestAccounts' })
+    .then((accounts) => {
+      return accounts[0];
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+export { connectWeb3Onload, connectWeb3, subscribeMetamask, connectMetamask, getAccount };

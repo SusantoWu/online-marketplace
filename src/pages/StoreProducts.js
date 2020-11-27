@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Bids from '../components/BIds';
 import Timer from '../components/Timer';
 import { etherToWei, weiToEther } from '../helpers/parse';
-import { startAuction, getAuctions, endAuction, subscribeEvent as auctionSubscribeEvent } from '../services/auction';
+import { startAuction, getAuctions, subscribeEvent as auctionSubscribeEvent } from '../services/auction';
 import { getStoreProducts, addProduct, deleteProduct, updateProduct, subscribeEvent } from '../services/store';
 
 const Container = styled(Flex)`

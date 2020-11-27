@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Text, Button, Flex, Box, theme, Loader, Input } from 'rimble-ui';
 import styled from 'styled-components';
-import { getAuctions, bidAuction, getUserBids, subscribeEvent as auctionSubsribeEVent } from '../services/auction';
+import { getAuctions, bidAuction, subscribeEvent as auctionSubsribeEVent } from '../services/auction';
 import { getProducts, buyProduct, subscribeEvent } from '../services/store';
 import Timer from '../components/Timer';
 import { etherToWei, weiToEther } from '../helpers/parse';
@@ -47,9 +47,13 @@ class Products extends Component {
       data: (event) => {
         const { id, quantity, paid } = event.returnValues;
         this.setState(({ products }) => ({
-          products: products.map((product) => product.id === id ? { ...product, quantity } : product),
+          products: products.map((product) =>
+            product.id === id
+              ? { ...product, quantity: product.quantity - quantity }
+              : product
+          )
         }))
-        alert(`ProductBought success! Spent ETH ${paid}.`);
+        alert(`ProductBought success! Spent ${weiToEther(paid)} ETH.`);
       }
     });
 
@@ -63,35 +67,26 @@ class Products extends Component {
     this.initialise();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.account !== this.props.account) {
-      this.initialise();
-    }
-  }
-
   initialise() {
-    const { account } = this.props;
     const { next } = this.state;
 
-    if (account) {
-      this.setState({ loading: true });
-      getProducts(next, 6, account)
-        .then((result) => {
-          this.setState(({ products }) => ({
-            products: [...products, ...result.data],
-            prev: result.prev,
-            next: result.next,
-            stop: next === result.next
-          }));
-          getAuctions(result.data.map((product) => product.id), account)
-            .then((data) => {
-              this.setState(({ auctions }) => ({
-                auctions: [...auctions, ...data]
-              }));
-            });
-        })
-        .finally(() => this.setState({ loading: false }));
-    }
+    this.setState({ loading: true });
+    getProducts(next, 6)
+      .then((result) => {
+        this.setState(({ products }) => ({
+          products: [...products, ...result.data],
+          prev: result.prev,
+          next: result.next,
+          stop: next === result.next
+        }));
+        getAuctions(result.data.map((product) => product.id))
+          .then((data) => {
+            this.setState(({ auctions }) => ({
+              auctions: [...auctions, ...data]
+            }));
+          });
+      })
+      .finally(() => this.setState({ loading: false }));
   }
 
   handleLoad() {
@@ -119,9 +114,17 @@ class Products extends Component {
       return;
     }
 
-    buyProduct(id, value, price * value, account).then(() => {
-      this.setState({ value: '' });
-    });
+    if (account) {
+      buyProduct(id, value, price * value, account).then(() => {
+        this.setState({ value: '' });
+      });
+    } else {
+      this.props.connect((account) => {
+        buyProduct(id, value, price * value, account).then(() => {
+          this.setState({ value: '' });
+        });
+      });
+    }
   }
 
   handleBid({ id, startPrice, bidded }) {
@@ -138,10 +141,17 @@ class Products extends Component {
       alert('Invalid input!');
       return;
     }
-
-    bidAuction(id, actualValue, account).then(() => {
-      this.setState({ value: '' });
-    });
+    if (account) {
+      bidAuction(id, actualValue, account).then(() => {
+        this.setState({ value: '' });
+      });
+    } else {
+      this.props.connect((account) => {
+        bidAuction(id, actualValue, account).then(() => {
+          this.setState({ value: '' });
+        });
+      });
+    }
   }
 
   productAuction({ id }) {

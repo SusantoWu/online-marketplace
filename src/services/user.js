@@ -37,7 +37,7 @@ export const getRoleConstant = async (roleFnName) => {
 
 export const getRole = async (account) => {
   const userContract = await getContract();
-  return userContract.methods.getRole(account).call();;
+  return userContract.methods.getRole(account).call();
 }
 
 export const getAdmins = async (sender) => {

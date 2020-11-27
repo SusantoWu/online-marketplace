@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MetaMaskButton, EthAddress, Flex, Box, Heading, theme } from 'rimble-ui';
+import { Flex, Box, Heading, theme } from 'rimble-ui';
 import { routes } from './routes';
 import Connect from './components/Connect';
 import Menu from './components/Menu';
@@ -8,29 +8,18 @@ import Menu from './components/Menu';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { account: null, connecting: false };
+    this.state = { account: null, connect: null };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleConnect = this.handleConnect.bind(this);
     this.handleConnected = this.handleConnected.bind(this);
-    this.handleFailed = this.handleFailed.bind(this);
   }
 
-  componentDidMount() {
-    this.handleClick();
+  handleConnect(callback) {
+    this.setState({ connect: callback });
   }
 
-  handleClick() {
-    this.setState({ connecting: true });
-  }
-
-  handleConnected(web3) {
-    this.setState({ connecting: false });
-    web3.eth.getAccounts()
-      .then((accounts) => this.setState({ account: accounts[0] }));
-  }
-
-  handleFailed() {
-    this.setState({ connecting: false });
+  handleConnected(account) {
+    this.setState({ account, connect: null });
   }
 
   render() {
@@ -46,15 +35,7 @@ class App extends Component {
           <Flex flexDirection="column" height="100%">
             <Box p="3" boxShadow="2px 0px 2px black">
               <Flex justifyContent="flex-end">
-                {
-                  this.state.account ?
-                    (<Box maxWidth="500px"><EthAddress address={this.state.account} /></Box>)
-                    : (
-                      <MetaMaskButton.Outline size="small" onClick={this.handleClick}>
-                        Connect with MetaMask
-                      </MetaMaskButton.Outline>
-                    )
-                }
+                <Connect connected={this.handleConnected} connect={this.state.connect}></Connect>
               </Flex>
             </Box>
             <Box flex="1" p="3" overflow="auto">
@@ -65,7 +46,9 @@ class App extends Component {
                     exact={route.exact}
                     path={route.path}
                     render={props => (
-                      route.component ? <route.component {...props} account={this.state.account} /> : <Redirect to={route.redirect} />
+                      route.component
+                        ? <route.component {...props} account={this.state.account} connect={this.handleConnect} />
+                        : <Redirect to={route.redirect} />
                     )}
                   />
                 ))}
@@ -73,9 +56,6 @@ class App extends Component {
             </Box>
           </Flex>
         </Box>
-        {
-          this.state.connecting && (<Connect connected={this.handleConnected} failed={this.handleFailed}></Connect>)
-        }
       </Flex>
     );
   }

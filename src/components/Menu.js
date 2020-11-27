@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import { withRouter, matchPath } from 'react-router';
 import { routes } from '../routes';
 import styled from "styled-components";
 import { theme } from 'rimble-ui';
@@ -34,21 +35,53 @@ class Menu extends Component {
 
   componentDidUpdate(prevProps) {
     const { account } = this.props;
+    const { role } = this.state;
 
-    if (account && prevProps.account !== account) {
-      getRole(account).then((role) => this.setState({ role }));
+    if (account) {
+      if (prevProps.account !== this.props.account) {
+        getRole(account).then((role) => {
+          this.setState({ role })
+          this.routeGuard(role);
+        });
+      }
+    } else if (role !== null) {
+      this.setState({ role: null });
+      this.routeGuard(null);
     }
   }
 
-  allowed(roles) {
-    const { role } = this.state;
+  routeGuard(role) {
+    const { history, location: { pathname } } = this.props;
+
+    const config = routes.find((route) => {
+      const match = matchPath(pathname, {
+        path: route.path,
+        exact: true,
+        strict: false
+      });
+      return match ? match.url === pathname : route.path === pathname;
+    });
+
+    if (!config) {
+      return;
+    }
+
+    const allowed = this.allowed(config.restrict, role);
+    if (allowed) {
+      return;
+    }
+
+    history.push('/');
+  }
+
+  allowed(roles, role) {
     return !roles || roles.some((routeRole) => routeRole === role);
   }
 
   render() {
     return (
       <Nav>
-        {routes.map((route, i) => this.allowed(route.restrict) && route.menu ? (
+        {routes.map((route, i) => this.allowed(route.restrict, this.state.role) && route.menu ? (
           <NavItem key={i}>
             <NavLink to={route.path}>{route.title}</NavLink>
           </NavItem>
@@ -58,4 +91,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default withRouter(Menu);

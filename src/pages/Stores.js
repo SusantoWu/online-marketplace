@@ -92,7 +92,7 @@ class Stores extends Component {
     withdraw(account, {
       receipt: () => {
         this.setState({
-          payments: 0,
+          payments: '0',
         });
         alert(`You have withdrawn ${weiToEther(payments)} ETH to ${account}`);
       }

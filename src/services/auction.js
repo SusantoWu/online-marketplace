@@ -27,26 +27,26 @@ const parseBid = (response) => {
   return resultToObject(response, 'bidder', 'price');
 }
 
-export const getAuctions = async (productIds, sender) => {
+export const getAuctions = async (productIds) => {
   const auctionContract = await getContract();
   const auctionStatePromises = productIds.map((id) =>
-    auctionContract.methods.hasAuction(id).call({ from: sender })
+    auctionContract.methods.hasAuction(id).call()
       .then((has) => has ? id : null)
   );
   const auctionStates = await Promise.all(auctionStatePromises);
   const auctions = auctionStates.filter(state => !!state).map((state) =>
-    auctionContract.methods.getAuction(state).call({ from: sender })
+    auctionContract.methods.getAuction(state).call()
       .then((data) => {
         const auction = parseAuction(data);
         auction.openTime = +auction.openTime;
         auction.closeTime = +auction.closeTime;
-        return auctionContract.methods.isOpen(state).call({ from: sender })
+        return auctionContract.methods.isOpen(state).call()
           .then((open) => {
             auction.opened = open;
-            return auctionContract.methods.hasClosed(state).call({ from: sender })
+            return auctionContract.methods.hasClosed(state).call()
               .then((close) => {
                 auction.closed = close;
-                return auctionContract.methods.hasBidded(state).call({ from: sender })
+                return auctionContract.methods.hasBidded(state).call()
                   .then((bid) => {
                     auction.bidded = bid;
                     return auction;
